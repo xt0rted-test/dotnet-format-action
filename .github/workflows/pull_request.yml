@@ -34,6 +34,7 @@ jobs:
       - uses: xt0rted/dotnet-format@v1.2.0
         with:
           version: ${{ steps.meta.outputs.version }}
+          verbosity: diagnostic
           only-changed-files: false
 
   dotnet-format-changed:
@@ -65,4 +66,5 @@ jobs:
       - uses: xt0rted/dotnet-format@v1.2.0
         with:
           version: ${{ steps.meta.outputs.version }}
+          verbosity: diagnostic
           only-changed-files: true
