@@ -31,7 +31,7 @@ jobs:
       - run: dotnet --info
       - uses: xt0rted/dotnet-format-problem-matcher@v1.2.0
       - run: dotnet tool install --global dotnet-format --version ${{ matrix.dotnet-format }}
-      - uses: xt0rted/dotnet-format@v1.2.0
+      - uses: xt0rted/dotnet-format@preview
         with:
           version: ${{ steps.meta.outputs.version }}
           verbosity: diagnostic
@@ -63,7 +63,7 @@ jobs:
       - run: dotnet --info
       - uses: xt0rted/dotnet-format-problem-matcher@v1.2.0
       - run: dotnet tool install --global dotnet-format --version ${{ matrix.dotnet-format }}
-      - uses: xt0rted/dotnet-format@v1.2.0
+      - uses: xt0rted/dotnet-format@preview
         with:
           version: ${{ steps.meta.outputs.version }}
           verbosity: diagnostic
