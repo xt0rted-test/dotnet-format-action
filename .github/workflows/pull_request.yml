@@ -30,6 +30,8 @@ jobs:
           dotnet-version: "3.1.x"
       - run: dotnet --info
       - uses: xt0rted/dotnet-format-problem-matcher@preview
+        with:
+          use-workspace: true
       - run: dotnet tool install --global dotnet-format --version ${{ matrix.dotnet-format }}
       - uses: xt0rted/dotnet-format@preview
         if: always()
@@ -75,6 +77,8 @@ jobs:
           dotnet-version: "3.1.x"
       - run: dotnet --info
       - uses: xt0rted/dotnet-format-problem-matcher@preview
+        with:
+          use-workspace: true
       - run: dotnet tool install --global dotnet-format --version ${{ matrix.dotnet-format }}
       - uses: xt0rted/dotnet-format@preview
         if: always()
