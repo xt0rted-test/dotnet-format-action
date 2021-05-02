@@ -45,12 +45,6 @@ jobs:
           version: ${{ steps.meta.outputs.version }}
           only-changed-files: false
           workspace: ./3.1
-      - uses: xt0rted/dotnet-format@preview
-        if: always()
-        with:
-          version: ${{ steps.meta.outputs.version }}
-          only-changed-files: false
-          workspace: ./5.0
 
   dotnet-format-changed:
     strategy:
@@ -92,9 +86,3 @@ jobs:
           version: ${{ steps.meta.outputs.version }}
           only-changed-files: true
           workspace: ./3.1
-      - uses: xt0rted/dotnet-format@preview
-        if: always()
-        with:
-          version: ${{ steps.meta.outputs.version }}
-          only-changed-files: true
-          workspace: ./5.0
