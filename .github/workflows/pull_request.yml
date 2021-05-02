@@ -29,13 +29,23 @@ jobs:
         with:
           dotnet-version: "3.1.x"
       - run: dotnet --info
-      - uses: xt0rted/dotnet-format-problem-matcher@v1.2.0
+      - uses: xt0rted/dotnet-format-problem-matcher@preview
       - run: dotnet tool install --global dotnet-format --version ${{ matrix.dotnet-format }}
       - uses: xt0rted/dotnet-format@preview
         with:
           version: ${{ steps.meta.outputs.version }}
-          verbosity: diagnostic
           only-changed-files: false
+          workspace: ./2.1
+      - uses: xt0rted/dotnet-format@preview
+        with:
+          version: ${{ steps.meta.outputs.version }}
+          only-changed-files: false
+          workspace: ./3.1
+      - uses: xt0rted/dotnet-format@preview
+        with:
+          version: ${{ steps.meta.outputs.version }}
+          only-changed-files: false
+          workspace: ./5.0
 
   dotnet-format-changed:
     strategy:
@@ -61,10 +71,23 @@ jobs:
         with:
           dotnet-version: "3.1.x"
       - run: dotnet --info
-      - uses: xt0rted/dotnet-format-problem-matcher@v1.2.0
+      - uses: xt0rted/dotnet-format-problem-matcher@preview
       - run: dotnet tool install --global dotnet-format --version ${{ matrix.dotnet-format }}
       - uses: xt0rted/dotnet-format@preview
         with:
           version: ${{ steps.meta.outputs.version }}
           verbosity: diagnostic
           only-changed-files: true
+          workspace: ./2.1
+      - uses: xt0rted/dotnet-format@preview
+        with:
+          version: ${{ steps.meta.outputs.version }}
+          verbosity: diagnostic
+          only-changed-files: true
+          workspace: ./3.1
+      - uses: xt0rted/dotnet-format@preview
+        with:
+          version: ${{ steps.meta.outputs.version }}
+          verbosity: diagnostic
+          only-changed-files: true
+          workspace: ./5.0
