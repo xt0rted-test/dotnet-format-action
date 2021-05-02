@@ -32,29 +32,23 @@ jobs:
       - uses: xt0rted/dotnet-format-problem-matcher@preview
       - run: dotnet tool install --global dotnet-format --version ${{ matrix.dotnet-format }}
       - uses: xt0rted/dotnet-format@preview
-        id: sdk-21
+        if: always()
         with:
           version: ${{ steps.meta.outputs.version }}
           only-changed-files: false
           workspace: ./2.1
-          fail-fast: false
       - uses: xt0rted/dotnet-format@preview
-        id: sdk-31
+        if: always()
         with:
           version: ${{ steps.meta.outputs.version }}
           only-changed-files: false
           workspace: ./3.1
-          fail-fast: false
       - uses: xt0rted/dotnet-format@preview
-        id: sdk-50
+        if: always()
         with:
           version: ${{ steps.meta.outputs.version }}
           only-changed-files: false
           workspace: ./5.0
-          fail-fast: false
-      - run: exit 1
-        if: steps.sdk-21.outputs.has-changes == 'true' || steps.sdk-31.outputs.has-changes == 'true' || steps.sdk-50.outputs.has-changes == 'true'
-        shell: bash
 
   dotnet-format-changed:
     strategy:
@@ -83,29 +77,23 @@ jobs:
       - uses: xt0rted/dotnet-format-problem-matcher@preview
       - run: dotnet tool install --global dotnet-format --version ${{ matrix.dotnet-format }}
       - uses: xt0rted/dotnet-format@preview
-        id: sdk-21
+        if: always()
         with:
           version: ${{ steps.meta.outputs.version }}
           verbosity: diagnostic
           only-changed-files: true
           workspace: ./2.1
-          fail-fast: false
       - uses: xt0rted/dotnet-format@preview
-        id: sdk-31
+        if: always()
         with:
           version: ${{ steps.meta.outputs.version }}
           verbosity: diagnostic
           only-changed-files: true
           workspace: ./3.1
-          fail-fast: false
       - uses: xt0rted/dotnet-format@preview
-        id: sdk-50
+        if: always()
         with:
           version: ${{ steps.meta.outputs.version }}
           verbosity: diagnostic
           only-changed-files: true
           workspace: ./5.0
-          fail-fast: false
-      - run: exit 1
-        if: steps.sdk-21.outputs.has-changes == 'true' || steps.sdk-31.outputs.has-changes == 'true' || steps.sdk-50.outputs.has-changes == 'true'
-        shell: bash
